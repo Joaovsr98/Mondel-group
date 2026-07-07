@@ -1,0 +1,15 @@
+FOTOS REAIS DA MONDEL — banco de imagens do site
+==================================================
+
+Salve aqui as fotos boas da operação. Sugestão de nomes:
+
+  andes-frota.jpg     -> frota Mondel na estrada com a cordilheira (foto vertical)
+  operacao-doca.jpg   -> carregamento na doca / empilhadeira dentro do baú
+
+A FOTO DA TRAVESSIA (Andes) fica em outra pasta:
+  public/travessia/andes.jpg   (é a que aparece na seção "A Travessia")
+
+Regras de uso (Manual de Identidade):
+- usar SOMENTE fotos reais boas; nada de imagem com "cara de IA";
+- não alterar caminhões reais sem autorização;
+- estas serão aplicadas nas seções Frota / Operação / Galeria numa próxima etapa.

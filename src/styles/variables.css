@@ -1,0 +1,104 @@
+/* =====================================================================
+   MONDEL GROUP — DESIGN TOKENS
+   Todo o sistema visual do site é controlado por estas variáveis.
+   Para adaptar a outra empresa, basta editar as cores e fontes abaixo.
+   ===================================================================== */
+
+:root {
+  /* ---------- CORES DA MARCA ---------- */
+  --color-navy-900: #0a1b3d; /* fundo do hero / seções escuras */
+  --color-navy-800: #0e2350;
+  --color-navy-700: #14357a;
+  --color-blue-700: #16408c; /* azul institucional (logo) */
+  --color-blue-600: #1d54ad;
+  --color-blue-500: #2e6fcb; /* links / detalhes */
+  --color-blue-100: #e6f0fb;
+
+  --color-red-600: #d81e27; /* CTA / destaques */
+  --color-red-500: #e63946;
+  --color-red-100: #fbe7e8;
+
+  /* ---------- NEUTROS ---------- */
+  --color-ink: #0b1220; /* títulos */
+  --color-text: #3a4356; /* corpo de texto */
+  --color-text-soft: #5a6478; /* texto secundário */
+  --color-gray-100: #f4f6fa; /* fundo de seções claras */
+  --color-gray-200: #e7ebf2;
+  --color-gray-300: #d3dae6;
+  --color-white: #ffffff;
+
+  /* ---------- SUPERFÍCIES ---------- */
+  --surface-page: #ffffff;
+  --surface-card: #ffffff;
+  --surface-dark: var(--color-navy-900);
+
+  /* ---------- WHATSAPP ---------- */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #1da851;
+
+  /* ---------- TIPOGRAFIA ---------- */
+  --font-display: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --fs-hero: clamp(2.4rem, 6vw, 4.4rem);
+  --fs-h2: clamp(1.9rem, 4vw, 3rem);
+  --fs-h3: clamp(1.3rem, 2.4vw, 1.7rem);
+  --fs-lead: clamp(1.05rem, 1.6vw, 1.25rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-eyebrow: 0.8rem;
+
+  /* ---------- ESPAÇAMENTO ---------- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  --container: 1200px;
+  --container-narrow: 900px;
+
+  /* ---------- RAIOS / SOMBRAS ---------- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 2px 8px rgba(11, 18, 32, 0.06);
+  --shadow-md: 0 12px 30px rgba(11, 18, 32, 0.1);
+  --shadow-lg: 0 24px 60px rgba(11, 18, 32, 0.16);
+  --shadow-blue: 0 18px 44px rgba(22, 64, 140, 0.28);
+
+  /* ---------- HEADER / LAYOUT ---------- */
+  --header-h: 76px;
+
+  /* ---------- TRANSIÇÕES ---------- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 0.5s;
+
+  /* =====================================================================
+     TOKENS DE MARCA (Manual de Identidade Digital) — ADITIVOS
+     Aplicados às seções já migradas (Hero, A Travessia...). As seções
+     ainda não migradas seguem usando os tokens legados acima.
+     ===================================================================== */
+
+  /* ---------- CORES DE MARCA ---------- */
+  --color-navy-950: #060f24; /* navy profundo / vinheta */
+  --color-paper: #f4f2ed; /* neutro claro "caro" (não branco puro) */
+  --color-stone: #9aa3b2; /* neutro médio / hairlines / labels */
+  --color-ice: #cfe4f5; /* gelo — cadeia do frio / dados */
+  --color-ice-bright: #7fb0ff; /* gelo vivo */
+
+  /* ---------- TIPOGRAFIA DE MARCA ---------- */
+  --font-brand: 'Space Grotesk', 'Montserrat', system-ui, sans-serif; /* display */
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace; /* dados */
+
+  /* ---------- MOTION (identidade de movimento) ---------- */
+  --motion-micro: 140ms;
+  --motion-base: 280ms;
+  --motion-enter: 600ms;
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-weight: cubic-bezier(0.65, 0, 0.35, 1);
+}

@@ -1,0 +1,135 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-card);
+  border: 1px solid var(--color-gray-200);
+  border-top: 3px solid var(--color-blue-700);
+  border-radius: var(--radius-md);
+  padding: 2rem 1.75rem;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.32s var(--ease), box-shadow 0.32s var(--ease),
+    border-color 0.32s var(--ease);
+}
+
+.card.red {
+  border-top-color: var(--color-red-600);
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(22, 64, 140, 0.05));
+  opacity: 0;
+  transition: opacity 0.32s var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+.iconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-sm);
+  background: var(--color-navy-900);
+  color: #fff;
+  margin-bottom: 1.2rem;
+  transition: background-color 0.32s var(--ease);
+}
+
+.red .iconWrap {
+  background: var(--color-red-600);
+}
+
+.blue .iconWrap {
+  background: var(--color-blue-700);
+}
+
+.subtitle {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-red-600);
+}
+
+.blue .subtitle {
+  color: var(--color-blue-500);
+}
+
+.title {
+  font-size: var(--fs-h3);
+  margin-top: 0.35rem;
+}
+
+.text {
+  margin-top: 0.7rem;
+  color: var(--color-text-soft);
+  line-height: 1.6;
+  font-size: 0.96rem;
+}
+
+/* Chamada "Solicitar cotação →" — afordância de clique */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 1.4rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.01em;
+  color: var(--color-blue-700);
+  position: relative;
+  z-index: 1;
+  transition: gap 0.28s var(--ease), color 0.28s var(--ease);
+}
+
+.red .cta {
+  color: var(--color-red-600);
+}
+
+.cta svg {
+  transition: transform 0.28s var(--ease);
+}
+
+.card:hover .cta {
+  gap: 0.65rem;
+}
+
+.card:hover .cta svg {
+  transform: translateX(3px);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
