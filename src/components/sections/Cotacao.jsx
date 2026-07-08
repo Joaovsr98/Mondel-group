@@ -18,8 +18,20 @@ const emptyForm = {
   destCity: '',
   destCityOther: '',
   cargoType: '',
+  weight: '',
+  urgency: '',
   message: '',
 };
+
+/** Normaliza o peso digitado para número em toneladas (formato pt-BR). */
+function formatTons(raw) {
+  if (!raw) return '';
+  const match = String(raw).replace(/\./g, ',').match(/\d+(?:,\d+)?/);
+  if (!match) return '';
+  const num = parseFloat(match[0].replace(',', '.'));
+  if (Number.isNaN(num)) return '';
+  return num.toLocaleString('pt-BR', { maximumFractionDigits: 3 });
+}
 
 export function Cotacao() {
   const { quote } = pt;
@@ -135,6 +147,40 @@ export function Cotacao() {
               </div>
             </label>
 
+            <div className={styles.row}>
+              <label className={styles.field}>
+                <span className={styles.label}>{quote.fields.weight}</span>
+                <div className={styles.suffixWrap}>
+                  <input
+                    className={styles.input}
+                    type="text"
+                    inputMode="decimal"
+                    value={form.weight}
+                    onChange={update('weight')}
+                    onBlur={() => setForm((f) => ({ ...f, weight: formatTons(f.weight) }))}
+                    placeholder={quote.fields.weightPlaceholder}
+                  />
+                  <span className={styles.suffix} aria-hidden="true">
+                    t
+                  </span>
+                </div>
+              </label>
+              <label className={styles.field}>
+                <span className={styles.label}>{quote.fields.urgency}</span>
+                <div className={styles.selectWrap}>
+                  <select className={styles.input} value={form.urgency} onChange={update('urgency')}>
+                    <option value="">Selecione…</option>
+                    {quote.urgencyOptions.map((opt) => (
+                      <option key={opt} value={opt}>
+                        {opt}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className={styles.chevron} size={18} aria-hidden="true" />
+                </div>
+              </label>
+            </div>
+
             <label className={styles.field}>
               <span className={styles.label}>{quote.fields.message}</span>
               <textarea
@@ -225,14 +271,20 @@ function RouteBlock({ legend, country, city, cityOther, onCountry, onCity, onCit
   );
 }
 
-function Field({ label, required, type = 'text', value, onChange }) {
+function Field({ label, required, type = 'text', value, onChange, placeholder }) {
   return (
     <label className={styles.field}>
       <span className={styles.label}>
         {label}
         {required && <em className={styles.req}>*</em>}
       </span>
-      <input className={styles.input} type={type} value={value} onChange={onChange} />
+      <input
+        className={styles.input}
+        type={type}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+      />
     </label>
   );
 }

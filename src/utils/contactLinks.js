@@ -49,6 +49,8 @@ export function buildQuoteWhatsapp(form) {
     `*Origem:* ${origem}`,
     `*Destino:* ${destino}`,
     `*Tipo de carga:* ${form.cargoType || '-'}`,
+    `*Peso estimado:* ${form.weight ? `${form.weight} t` : '-'}`,
+    `*Urgência:* ${form.urgency || '-'}`,
     '',
     `*Detalhes:* ${form.message || '-'}`,
   ];

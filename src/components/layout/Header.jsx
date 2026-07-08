@@ -4,6 +4,7 @@ import { pt } from '../../content/pt.js';
 import { useScrolled } from '../../hooks/useMediaQuery.js';
 import Logo from '../ui/Logo.jsx';
 import Button from '../ui/Button.jsx';
+import LangSwitch from '../ui/LangSwitch.jsx';
 import styles from './Header.module.css';
 
 export function Header() {
@@ -34,6 +35,7 @@ export function Header() {
         </nav>
 
         <div className={styles.actions}>
+          <LangSwitch variant={scrolled ? 'dark' : 'light'} />
           <Button href="#cotacao" variant="primary" size="md" icon={FileText}>
             {pt.hero.ctaPrimary}
           </Button>
@@ -61,6 +63,7 @@ export function Header() {
         <Button href="#cotacao" variant="primary" size="lg" icon={FileText} onClick={close}>
           {pt.hero.ctaPrimary}
         </Button>
+        <LangSwitch variant="light" className={styles.langMobile} />
       </div>
       {open && <button className={styles.overlay} aria-hidden="true" tabIndex={-1} onClick={close} />}
     </header>

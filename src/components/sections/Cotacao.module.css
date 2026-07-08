@@ -118,6 +118,27 @@ textarea.input {
   color: var(--color-red-600);
 }
 
+/* Campo de peso com sufixo "t" (toneladas) */
+.suffixWrap {
+  position: relative;
+}
+
+.suffixWrap input {
+  padding-right: 2.2rem;
+}
+
+.suffix {
+  position: absolute;
+  right: 0.95rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+  pointer-events: none;
+}
+
 /* Select com chevron próprio */
 .selectWrap {
   position: relative;

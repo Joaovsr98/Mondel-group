@@ -63,6 +63,14 @@
 .actions {
   display: flex;
   align-items: center;
+  gap: clamp(0.9rem, 1.6vw, 1.5rem);
+}
+
+/* Seletor de idioma dentro do menu mobile */
+.langMobile {
+  margin-top: auto;
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* ---------- Burger ---------- */
