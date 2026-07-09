@@ -35,24 +35,39 @@ export function mapOpenUrl() {
  * Monta a mensagem de cotação a partir dos dados do formulário
  * e devolve o link de WhatsApp pronto.
  */
-export function buildQuoteWhatsapp(form) {
+const DEFAULT_MSG = {
+  header: '*Nova solicitação de cotação — Mondel Group*',
+  name: 'Nome',
+  company: 'Empresa',
+  phone: 'Telefone',
+  email: 'E-mail',
+  origin: 'Origem',
+  destination: 'Destino',
+  cargoType: 'Tipo de carga',
+  weight: 'Peso estimado',
+  urgency: 'Urgência',
+  details: 'Detalhes',
+};
+
+export function buildQuoteWhatsapp(form, labels) {
+  const L = labels || DEFAULT_MSG;
   const origem = [form.originCountry, form.originCity].filter(Boolean).join(' / ') || '-';
   const destino = [form.destCountry, form.destCity].filter(Boolean).join(' / ') || '-';
   const linhas = [
-    '*Nova solicitação de cotação — Mondel Group*',
+    L.header,
     '',
-    `*Nome:* ${form.name || '-'}`,
-    `*Empresa:* ${form.company || '-'}`,
-    `*Telefone:* ${form.phone || '-'}`,
-    `*E-mail:* ${form.email || '-'}`,
+    `*${L.name}:* ${form.name || '-'}`,
+    `*${L.company}:* ${form.company || '-'}`,
+    `*${L.phone}:* ${form.phone || '-'}`,
+    `*${L.email}:* ${form.email || '-'}`,
     '',
-    `*Origem:* ${origem}`,
-    `*Destino:* ${destino}`,
-    `*Tipo de carga:* ${form.cargoType || '-'}`,
-    `*Peso estimado:* ${form.weight ? `${form.weight} t` : '-'}`,
-    `*Urgência:* ${form.urgency || '-'}`,
+    `*${L.origin}:* ${origem}`,
+    `*${L.destination}:* ${destino}`,
+    `*${L.cargoType}:* ${form.cargoType || '-'}`,
+    `*${L.weight}:* ${form.weight ? `${form.weight} t` : '-'}`,
+    `*${L.urgency}:* ${form.urgency || '-'}`,
     '',
-    `*Detalhes:* ${form.message || '-'}`,
+    `*${L.details}:* ${form.message || '-'}`,
   ];
   return whatsappLink(linhas.join('\n'));
 }

@@ -1,20 +1,27 @@
 import { useState, useRef, Fragment } from 'react';
+import { useLang } from '../../i18n/LanguageContext.jsx';
 import styles from './LangSwitch.module.css';
 
 const LANGS = ['PT', 'ES', 'EN'];
-const ACTIVE = 'PT';
+const AVAILABLE = { PT: 'pt', ES: 'es' }; // EN entra no futuro
 
 /**
- * Seletor de idiomas — PT ativo; ES/EN preparados (mostram "Versão em breve").
- * variant: 'light' (sobre fundo escuro) | 'dark' (header claro/rolado).
- * Sem bandeiras, apenas texto em mono. Vermelho escasso (sublinhado do ativo).
+ * Seletor de idiomas — PT/ES funcionais; EN mostra "em breve".
+ * Sem bandeiras, texto em mono. Vermelho escasso (sublinhado do ativo).
  */
 export function LangSwitch({ variant = 'light', className = '' }) {
+  const { lang, setLang } = useLang();
   const [notice, setNotice] = useState(false);
   const timer = useRef();
+  const active = lang.toUpperCase();
+  const noticeText = lang === 'es' ? 'Versión en breve' : 'Versão em breve';
 
-  const handleClick = (lang) => {
-    if (lang === ACTIVE) return;
+  const handleClick = (code) => {
+    const target = AVAILABLE[code];
+    if (target) {
+      if (target !== lang) setLang(target);
+      return;
+    }
     setNotice(true);
     clearTimeout(timer.current);
     timer.current = setTimeout(() => setNotice(false), 2200);
@@ -24,10 +31,10 @@ export function LangSwitch({ variant = 'light', className = '' }) {
     <div
       className={`${styles.wrap} ${variant === 'light' ? styles.light : ''} ${className}`}
       role="group"
-      aria-label="Seletor de idioma"
+      aria-label="Idioma / Idioma"
     >
-      {LANGS.map((lang, i) => (
-        <Fragment key={lang}>
+      {LANGS.map((code, i) => (
+        <Fragment key={code}>
           {i > 0 && (
             <span className={styles.sep} aria-hidden="true">
               /
@@ -35,12 +42,11 @@ export function LangSwitch({ variant = 'light', className = '' }) {
           )}
           <button
             type="button"
-            className={`${styles.lang} ${lang === ACTIVE ? styles.active : ''}`}
-            onClick={() => handleClick(lang)}
-            aria-current={lang === ACTIVE ? 'true' : undefined}
-            aria-label={`Idioma ${lang}${lang === ACTIVE ? ' (ativo)' : ' — em breve'}`}
+            className={`${styles.lang} ${code === active ? styles.active : ''}`}
+            onClick={() => handleClick(code)}
+            aria-current={code === active ? 'true' : undefined}
           >
-            {lang}
+            {code}
           </button>
         </Fragment>
       ))}
@@ -50,7 +56,7 @@ export function LangSwitch({ variant = 'light', className = '' }) {
         role="status"
         aria-live="polite"
       >
-        {notice ? 'Versão em breve' : ''}
+        {notice ? noticeText : ''}
       </span>
     </div>
   );

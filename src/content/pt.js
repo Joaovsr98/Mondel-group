@@ -1,7 +1,6 @@
 /* =====================================================================
    CONTEÚDO DO SITE — PORTUGUÊS (pt-BR)
-   Todos os textos ficam aqui. Para adicionar outro idioma no futuro,
-   basta duplicar este arquivo (ex.: es.js) e trocar a importação.
+   Fonte única de cópia. O espanhol vive em es.js com a mesma forma.
    ===================================================================== */
 
 export const pt = {
@@ -76,6 +75,80 @@ export const pt = {
     title: 'Soluções completas para sua operação logística',
     subtitle:
       'Do frete exclusivo à cadeia do frio e ao despacho aduaneiro — tudo com a segurança e a inteligência que sua carga merece.',
+    items: {
+      ftl: {
+        subtitle: 'Carga fechada',
+        title: 'FTL / Exclusivo',
+        text: 'Veículo dedicado exclusivamente à sua carga, com rota direta e prazo otimizado da origem ao destino.',
+        long: 'Um veículo dedicado exclusivamente à sua carga, do ponto de origem ao destino final — sem transbordos nem paradas para consolidação. A solução ideal para volumes maiores, cargas sensíveis ou prazos apertados.',
+        highlights: [
+          'Veículo 100% dedicado',
+          'Rota direta, sem transbordo',
+          'Prazo otimizado',
+          'Ideal para cargas volumosas ou urgentes',
+        ],
+      },
+      ltl: {
+        subtitle: 'Carga fracionada',
+        title: 'LTL / Consolidado',
+        text: 'Consolidação inteligente de cargas que reduz o custo por operação sem abrir mão da segurança.',
+        long: 'Sua carga viaja consolidada com outras, dividindo o custo do transporte sem abrir mão da segurança. A opção mais eficiente para volumes menores e envios recorrentes pelo Cone Sul.',
+        highlights: [
+          'Custo compartilhado',
+          'Ideal para volumes menores',
+          'Rotas consolidadas',
+          'Segurança mantida de ponta a ponta',
+        ],
+      },
+      refrigerada: {
+        subtitle: 'Cadeia do frio',
+        title: 'Carga Refrigerada',
+        text: 'Transporte com controle de temperatura até -22°C para produtos refrigerados e congelados.',
+        long: 'Transporte com temperatura controlada do carregamento à entrega, mantendo a cadeia do frio ininterrupta para produtos refrigerados e congelados até -22°C.',
+        highlights: [
+          'Controle de temperatura até -22°C',
+          'Cadeia do frio ininterrupta',
+          'Refrigerados e congelados',
+          'Equipamentos homologados',
+        ],
+      },
+      perigosa: {
+        subtitle: 'Normas IMO',
+        title: 'Carga Perigosa',
+        text: 'Movimentação de cargas perigosas com equipe habilitada e conformidade total às normas de segurança.',
+        long: 'Movimentação de cargas perigosas com total conformidade às normas IMO: equipe habilitada, documentação e sinalização adequadas e protocolos rígidos de segurança em cada etapa do transporte.',
+        highlights: [
+          'Conformidade com normas IMO',
+          'Equipe habilitada',
+          'Documentação e sinalização',
+          'Protocolos rígidos de segurança',
+        ],
+      },
+      satelite: {
+        subtitle: 'Monitoramento 24/7',
+        title: 'Rastreamento por Satélite',
+        text: 'Acompanhamento em tempo real de cada embarque, do carregamento até a entrega final.',
+        long: 'Cada embarque é acompanhado por rastreamento via satélite, com monitoramento em tempo real do carregamento até a entrega final — dando total previsibilidade à sua operação.',
+        highlights: [
+          'Rastreamento 24/7 por satélite',
+          'Acompanhamento em tempo real',
+          'Previsibilidade total',
+          'Do carregamento à entrega',
+        ],
+      },
+      aduana: {
+        subtitle: 'Comércio exterior',
+        title: 'Despacho de Aduana',
+        text: 'Despacho aduaneiro completo para importação e exportação, com toda a documentação sob controle.',
+        long: 'Cuidamos de todo o despacho aduaneiro para importação e exportação, com a documentação de comércio exterior sob controle e agilidade na liberação nas fronteiras do Cone Sul.',
+        highlights: [
+          'Despacho para importação e exportação',
+          'Documentação completa',
+          'Agilidade nas fronteiras',
+          'Comércio exterior sob controle',
+        ],
+      },
+    },
   },
 
   process: {
@@ -107,12 +180,26 @@ export const pt = {
     subtitle:
       'Equipamentos próprios e homologados para carga seca, refrigerada, congelada e perigosa, com rastreamento em tempo real.',
     note: 'Fotos ilustrativas da frota. As imagens oficiais serão inseridas em breve.',
+    items: {
+      'carreta-bau': { nome: 'Carreta Baú', specs: 'Carga seca • até 30 t' },
+      refrigerado: { nome: 'Baú Refrigerado', specs: 'Cadeia do frio • até -22°C' },
+      sider: { nome: 'Carreta Sider', specs: 'Carga paletizada • lona lateral' },
+      graneleiro: { nome: 'Cavalo Mecânico', specs: 'Longa distância • rotas internacionais' },
+    },
   },
 
   gallery: {
     eyebrow: 'Galeria',
     title: 'A operação em movimento',
     subtitle: 'Um panorama da nossa estrutura, equipamentos e rotas pelo Cone Sul.',
+    tiles: {
+      rota: 'Operação em rota',
+      frota: 'Frota Mondel',
+      frio: 'Cadeia do frio',
+      aduana: 'Despacho aduaneiro',
+      carregamento: 'Carregamento na operação',
+      rastreamento: 'Rastreamento 24/7',
+    },
   },
 
   offices: {
@@ -120,11 +207,53 @@ export const pt = {
     title: 'Presença que une o Cone Sul',
     subtitle:
       'Escritórios próprios nos principais eixos logísticos do Cone Sul, com rotas consolidadas entre os países atendidos.',
+    units: 'Nossas unidades',
+    alsoServe: 'Também atendemos',
+    tipos: { matriz: 'Matriz', apoio: 'Apoio', atendido: 'Atendido' },
+    status: {
+      matriz: 'Origem da operação',
+      apoio: 'Hub de apoio',
+      atendido: 'País atendido',
+    },
+    countries: {
+      chile: 'Chile',
+      argentina: 'Argentina',
+      brasil: 'Brasil',
+      uruguai: 'Uruguai',
+      paraguai: 'Paraguai',
+    },
   },
 
   faq: {
     eyebrow: 'Dúvidas frequentes',
     title: 'Perguntas frequentes',
+    items: [
+      {
+        pergunta: 'Quais países a Mondel atende?',
+        resposta:
+          'Operamos transporte rodoviário internacional pelo Cone Sul: Brasil, Argentina, Uruguai, Paraguai e Chile. Nossa matriz fica no Chile, com escritórios próprios de apoio no Brasil e na Argentina, atendendo também Uruguai e Paraguai.',
+      },
+      {
+        pergunta: 'Vocês transportam carga refrigerada e congelada?',
+        resposta:
+          'Sim. Contamos com equipamentos aptos para cargas que exigem temperatura controlada, do refrigerado ao congelado até -22°C, mantendo a cadeia do frio durante todo o trajeto.',
+      },
+      {
+        pergunta: 'Como funciona a cotação?',
+        resposta:
+          'Você envia origem, destino e detalhes da carga pelo formulário ou WhatsApp. Nosso time monta a melhor solução de rota, modalidade e prazo, e retorna com o orçamento personalizado.',
+      },
+      {
+        pergunta: 'A carga é monitorada durante o transporte?',
+        resposta:
+          'Todos os embarques contam com rastreamento por satélite, permitindo acompanhamento em tempo real do carregamento à entrega final.',
+      },
+      {
+        pergunta: 'A Mondel cuida do despacho aduaneiro?',
+        resposta:
+          'Sim. Oferecemos despacho aduaneiro completo para importação e exportação, cuidando de toda a documentação de comércio exterior.',
+      },
+    ],
   },
 
   quote: {
@@ -152,6 +281,7 @@ export const pt = {
       urgency: 'Urgência',
       message: 'Detalhes da carga (volume, observações)',
     },
+    select: 'Selecione…',
     cargoOptions: [
       'Carga fechada (FTL)',
       'Carga fracionada (LTL)',
@@ -162,12 +292,14 @@ export const pt = {
     urgencyOptions: ['Flexível — melhor custo', 'Padrão', 'Urgente — o quanto antes'],
     submit: 'Enviar pelo WhatsApp',
     privacy: 'Seus dados são usados apenas para retorno comercial e não são compartilhados.',
+    error: 'Preencha ao menos seu nome e telefone para continuarmos.',
   },
 
   contact: {
     eyebrow: 'Contato',
     title: 'Fale com especialistas em transporte no Mercosul',
     subtitle: 'Estamos prontos para atender sua operação. Escolha o canal de sua preferência.',
+    mapLink: 'Abrir no Google Maps',
     labels: {
       whatsapp: 'WhatsApp',
       phone: 'Telefone',
@@ -186,6 +318,7 @@ export const pt = {
       quickLinks: 'Navegação',
       contact: 'Contato',
     },
+    quote: 'Cotação',
     rights: 'Todos os direitos reservados.',
     developer: 'Desenvolvido com excelência',
   },
@@ -193,6 +326,30 @@ export const pt = {
   whatsappFloat: {
     label: 'Fale com a gente',
     message: 'Olá! Vim pelo site e gostaria de solicitar uma cotação.',
+  },
+
+  ui: {
+    requestQuote: 'Solicitar cotação',
+    viewDetails: 'Ver detalhes',
+    close: 'Fechar',
+    editable: 'Editável — foto real',
+    scrollAria: 'Rolar para baixo',
+    menuOpen: 'Abrir menu',
+    menuClose: 'Fechar menu',
+  },
+
+  quoteMessage: {
+    header: '*Nova solicitação de cotação — Mondel Group*',
+    name: 'Nome',
+    company: 'Empresa',
+    phone: 'Telefone',
+    email: 'E-mail',
+    origin: 'Origem',
+    destination: 'Destino',
+    cargoType: 'Tipo de carga',
+    weight: 'Peso estimado',
+    urgency: 'Urgência',
+    details: 'Detalhes',
   },
 };
 

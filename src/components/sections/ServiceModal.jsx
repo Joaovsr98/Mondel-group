@@ -1,13 +1,16 @@
 import { useEffect } from 'react';
 import { X, ArrowRight, Check } from 'lucide-react';
 import { getIcon } from '../../utils/icons.js';
+import { useContent } from '../../i18n/LanguageContext.jsx';
 import styles from './ServiceModal.module.css';
 
 /**
  * Modal premium de detalhes do serviço.
- * Abre ao clicar em "Ver detalhes"; fecha por X, overlay ou ESC.
+ * Recebe um "service" já mesclado (estrutura + cópia do idioma ativo).
  */
 export function ServiceModal({ service, onClose, onQuote }) {
+  const pt = useContent();
+
   useEffect(() => {
     if (!service) return undefined;
     const onKey = (e) => {
@@ -24,7 +27,6 @@ export function ServiceModal({ service, onClose, onQuote }) {
   if (!service) return null;
 
   const Icon = getIcon(service.icon);
-  const details = service.details || {};
 
   return (
     <div className={styles.overlay} onClick={onClose} role="presentation">
@@ -35,7 +37,7 @@ export function ServiceModal({ service, onClose, onQuote }) {
         aria-labelledby="service-modal-title"
         onClick={(e) => e.stopPropagation()}
       >
-        <button type="button" className={styles.close} onClick={onClose} aria-label="Fechar">
+        <button type="button" className={styles.close} onClick={onClose} aria-label={pt.ui.close}>
           <X size={20} strokeWidth={2.2} />
         </button>
 
@@ -46,11 +48,11 @@ export function ServiceModal({ service, onClose, onQuote }) {
         <h3 className={styles.title} id="service-modal-title">
           {service.title}
         </h3>
-        <p className={styles.text}>{details.long || service.text}</p>
+        <p className={styles.text}>{service.long || service.text}</p>
 
-        {details.highlights && (
+        {service.highlights && (
           <ul className={styles.list}>
-            {details.highlights.map((h) => (
+            {service.highlights.map((h) => (
               <li key={h}>
                 <Check size={15} strokeWidth={2.6} aria-hidden="true" />
                 {h}
@@ -60,7 +62,7 @@ export function ServiceModal({ service, onClose, onQuote }) {
         )}
 
         <button type="button" className={styles.cta} onClick={() => onQuote(service.cargo)}>
-          Solicitar cotação
+          {pt.ui.requestQuote}
           <ArrowRight size={17} strokeWidth={2.4} aria-hidden="true" />
         </button>
       </div>

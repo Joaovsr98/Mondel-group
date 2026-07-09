@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { getIcon } from '../../utils/icons.js';
-import { pt } from '../../content/pt.js';
+import { useContent } from '../../i18n/LanguageContext.jsx';
 import { servicos } from '../../data/servicos.js';
 import { prefillCargo } from '../../utils/quotePrefill.js';
 import SectionTitle from '../ui/SectionTitle.jsx';
@@ -9,7 +9,10 @@ import ServiceModal from './ServiceModal.jsx';
 import styles from './Servicos.module.css';
 
 export function Servicos() {
+  const pt = useContent();
   const [modal, setModal] = useState(null);
+
+  const cargoFor = (s) => (s.cargoIndex != null ? pt.quote.cargoOptions[s.cargoIndex] : '');
 
   const goToQuote = (cargo) => {
     prefillCargo(cargo);
@@ -29,20 +32,22 @@ export function Servicos() {
         <div className={styles.grid}>
           {servicos.map((s, i) => {
             const Icon = getIcon(s.icon);
+            const item = pt.services.items[s.id];
+            const cargo = cargoFor(s);
             return (
               <article
                 key={s.id}
                 className={`${styles.card} ${styles[s.accent]}`}
                 data-reveal
                 data-reveal-delay={(i % 3) + 1}
-                onClick={() => goToQuote(s.cargo)}
+                onClick={() => goToQuote(cargo)}
               >
                 <span className={styles.iconWrap}>
                   <Icon size={22} strokeWidth={2} />
                 </span>
-                <span className={styles.subtitle}>{s.subtitle}</span>
-                <h3 className={styles.title}>{s.title}</h3>
-                <p className={styles.text}>{s.text}</p>
+                <span className={styles.subtitle}>{item.subtitle}</span>
+                <h3 className={styles.title}>{item.title}</h3>
+                <p className={styles.text}>{item.text}</p>
 
                 <div className={styles.actions}>
                   <a
@@ -50,10 +55,10 @@ export function Servicos() {
                     className={styles.cta}
                     onClick={(e) => {
                       e.stopPropagation();
-                      prefillCargo(s.cargo);
+                      prefillCargo(cargo);
                     }}
                   >
-                    Solicitar cotação
+                    {pt.ui.requestQuote}
                     <ArrowRight size={15} strokeWidth={2.4} aria-hidden="true" />
                   </a>
                   <button
@@ -61,10 +66,10 @@ export function Servicos() {
                     className={styles.detail}
                     onClick={(e) => {
                       e.stopPropagation();
-                      setModal(s);
+                      setModal({ ...s, ...item, cargo });
                     }}
                   >
-                    Ver detalhes
+                    {pt.ui.viewDetails}
                     <ArrowRight size={13} strokeWidth={2.2} aria-hidden="true" />
                   </button>
                 </div>

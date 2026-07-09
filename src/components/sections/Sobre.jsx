@@ -1,11 +1,12 @@
 import { ShieldCheck, Timer, Globe2 } from 'lucide-react';
-import { pt } from '../../content/pt.js';
+import { useContent } from '../../i18n/LanguageContext.jsx';
 import { paisesAtendidos } from '../../data/oficinas.js';
 import styles from './Sobre.module.css';
 
 const icons = { ShieldCheck, Timer, Globe2 };
 
 export function Sobre() {
+  const pt = useContent();
   const { about } = pt;
 
   return (
@@ -25,12 +26,15 @@ export function Sobre() {
             <div className={styles.countries}>
               <span className={styles.countriesLabel}>{pt.brand.tagline}</span>
               <div className={styles.flags}>
-                {paisesAtendidos.map((c) => (
-                  <span key={c.nome} className={styles.flag} title={c.nome}>
-                    <span className={styles.flagEmoji}>{c.flag}</span>
-                    {c.nome}
-                  </span>
-                ))}
+                {paisesAtendidos.map((c) => {
+                  const nome = pt.offices.countries[c.id] || c.nome;
+                  return (
+                    <span key={c.id} className={styles.flag} title={nome}>
+                      <span className={styles.flagEmoji}>{c.flag}</span>
+                      {nome}
+                    </span>
+                  );
+                })}
               </div>
             </div>
           </div>

@@ -32,11 +32,11 @@ export const oficinas = [
 
 // Países atendidos (para a faixa "Uniendo el Cono Sur")
 export const paisesAtendidos = [
-  { flag: '🇧🇷', nome: 'Brasil' },
-  { flag: '🇦🇷', nome: 'Argentina' },
-  { flag: '🇺🇾', nome: 'Uruguai' },
-  { flag: '🇵🇾', nome: 'Paraguai' },
-  { flag: '🇨🇱', nome: 'Chile' },
+  { id: 'brasil', flag: '🇧🇷', nome: 'Brasil' },
+  { id: 'argentina', flag: '🇦🇷', nome: 'Argentina' },
+  { id: 'uruguai', flag: '🇺🇾', nome: 'Uruguai' },
+  { id: 'paraguai', flag: '🇵🇾', nome: 'Paraguai' },
+  { id: 'chile', flag: '🇨🇱', nome: 'Chile' },
 ];
 
 export default oficinas;

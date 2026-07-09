@@ -1,9 +1,10 @@
 import { MessageCircle } from 'lucide-react';
-import { pt } from '../../content/pt.js';
+import { useContent } from '../../i18n/LanguageContext.jsx';
 import { whatsappLink } from '../../utils/contactLinks.js';
 import styles from './WhatsAppFloat.module.css';
 
 export function WhatsAppFloat() {
+  const pt = useContent();
   return (
     <a
       className={styles.float}

@@ -1,8 +1,9 @@
-import { pt } from '../../content/pt.js';
+import { useContent } from '../../i18n/LanguageContext.jsx';
 import SectionTitle from '../ui/SectionTitle.jsx';
 import styles from './Processo.module.css';
 
 export function Processo() {
+  const pt = useContent();
   const { process } = pt;
 
   return (

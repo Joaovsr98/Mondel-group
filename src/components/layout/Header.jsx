@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, FileText } from 'lucide-react';
-import { pt } from '../../content/pt.js';
+import { useContent } from '../../i18n/LanguageContext.jsx';
 import { useScrolled } from '../../hooks/useMediaQuery.js';
 import Logo from '../ui/Logo.jsx';
 import Button from '../ui/Button.jsx';
@@ -10,6 +10,7 @@ import styles from './Header.module.css';
 export function Header() {
   const [open, setOpen] = useState(false);
   const scrolled = useScrolled(24);
+  const pt = useContent();
 
   // Trava o scroll do body quando o menu mobile está aberto.
   useEffect(() => {
@@ -44,7 +45,7 @@ export function Header() {
         <button
           className={styles.burger}
           onClick={() => setOpen((v) => !v)}
-          aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+          aria-label={open ? pt.ui.menuClose : pt.ui.menuOpen}
           aria-expanded={open}
         >
           {open ? <X size={26} /> : <Menu size={26} />}

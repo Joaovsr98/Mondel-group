@@ -1,11 +1,13 @@
 import { Info } from 'lucide-react';
 import { getIcon } from '../../utils/icons.js';
-import { pt } from '../../content/pt.js';
+import { useContent } from '../../i18n/LanguageContext.jsx';
 import { frota } from '../../data/frota.js';
 import SectionTitle from '../ui/SectionTitle.jsx';
 import styles from './Frota.module.css';
 
 export function Frota() {
+  const pt = useContent();
+
   return (
     <section id="frota" className="section section--tint">
       <div className="container">
@@ -18,6 +20,7 @@ export function Frota() {
         <div className={styles.grid}>
           {frota.map((v, i) => {
             const Icon = getIcon(v.icon);
+            const item = pt.fleet.items[v.id] || {};
             return (
               <article
                 key={v.id}
@@ -27,7 +30,7 @@ export function Frota() {
               >
                 <div className={styles.media}>
                   {v.image ? (
-                    <img src={v.image} alt={v.nome} loading="lazy" className={styles.img} />
+                    <img src={v.image} alt={item.nome} loading="lazy" className={styles.img} />
                   ) : (
                     <span className={styles.placeholder} aria-hidden="true">
                       <Icon size={54} strokeWidth={1.4} />
@@ -35,8 +38,8 @@ export function Frota() {
                   )}
                 </div>
                 <div className={styles.body}>
-                  <h3 className={styles.name}>{v.nome}</h3>
-                  <p className={styles.specs}>{v.specs}</p>
+                  <h3 className={styles.name}>{item.nome}</h3>
+                  <p className={styles.specs}>{item.specs}</p>
                 </div>
               </article>
             );

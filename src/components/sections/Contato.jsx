@@ -1,5 +1,5 @@
 import { MessageCircle, Phone, Mail, Instagram, Linkedin, MapPin, ExternalLink } from 'lucide-react';
-import { pt } from '../../content/pt.js';
+import { useContent } from '../../i18n/LanguageContext.jsx';
 import { empresa } from '../../data/empresa.js';
 import {
   whatsappLink,
@@ -12,6 +12,7 @@ import SectionTitle from '../ui/SectionTitle.jsx';
 import styles from './Contato.module.css';
 
 export function Contato() {
+  const pt = useContent();
   const { contact } = pt;
 
   const channels = [
@@ -113,7 +114,7 @@ export function Contato() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Abrir no Google Maps <ExternalLink size={14} />
+              {contact.mapLink} <ExternalLink size={14} />
             </a>
           </div>
         </div>

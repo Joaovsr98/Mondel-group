@@ -1,5 +1,5 @@
 import { ArrowDown, MapPin } from 'lucide-react';
-import { pt } from '../../content/pt.js';
+import { useContent } from '../../i18n/LanguageContext.jsx';
 import styles from './Travessia.module.css';
 
 /**
@@ -9,6 +9,7 @@ import styles from './Travessia.module.css';
  * (texto | arco-portal), sem grid de cards.
  */
 export function Travessia() {
+  const pt = useContent();
   const { travessia } = pt;
 
   return (

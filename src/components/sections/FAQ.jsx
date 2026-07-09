@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Plus } from 'lucide-react';
-import { pt } from '../../content/pt.js';
-import { faq } from '../../data/faq.js';
+import { useContent } from '../../i18n/LanguageContext.jsx';
 import SectionTitle from '../ui/SectionTitle.jsx';
 import styles from './FAQ.module.css';
 
 export function FAQ() {
-  const [open, setOpen] = useState(faq[0]?.id ?? null);
+  const pt = useContent();
+  const faq = pt.faq.items;
+  const [open, setOpen] = useState(0);
 
   return (
     <section className="section section--tint">
@@ -15,13 +16,13 @@ export function FAQ() {
           <SectionTitle eyebrow={pt.faq.eyebrow} title={pt.faq.title} align="center" />
 
           <div className={styles.list} data-reveal>
-            {faq.map((item) => {
-              const isOpen = open === item.id;
+            {faq.map((item, idx) => {
+              const isOpen = open === idx;
               return (
-                <div key={item.id} className={`${styles.item} ${isOpen ? styles.active : ''}`}>
+                <div key={idx} className={`${styles.item} ${isOpen ? styles.active : ''}`}>
                   <button
                     className={styles.question}
-                    onClick={() => setOpen(isOpen ? null : item.id)}
+                    onClick={() => setOpen(isOpen ? null : idx)}
                     aria-expanded={isOpen}
                   >
                     <span>{item.pergunta}</span>

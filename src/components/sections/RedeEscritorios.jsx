@@ -1,21 +1,28 @@
 import { useState } from 'react';
 import { Star, MapPin } from 'lucide-react';
-import { pt } from '../../content/pt.js';
+import { useContent } from '../../i18n/LanguageContext.jsx';
 import { oficinas, paisesAtendidos } from '../../data/oficinas.js';
 import { useMediaQuery } from '../../hooks/useMediaQuery.js';
 import styles from './RedeEscritorios.module.css';
 
-/* Hubs (pontos) do mapa — posições estilizadas do Cone Sul. */
+/* Hubs (pontos) — estrutura. País/tipo/status vêm do idioma ativo. */
 const NODES = [
-  { id: 'brasil', pais: 'Brasil', cidade: 'São Paulo', tipo: 'Apoio', status: 'Hub de apoio', x: 360, y: 250, type: 'apoio' },
-  { id: 'argentina', pais: 'Argentina', cidade: 'Buenos Aires', tipo: 'Apoio', status: 'Hub de apoio', x: 214, y: 452, type: 'apoio' },
-  { id: 'uruguai', pais: 'Uruguai', cidade: 'Montevidéu', tipo: 'Atendido', status: 'País atendido', x: 272, y: 446, type: 'atendido' },
-  { id: 'paraguai', pais: 'Paraguai', cidade: 'Assunção', tipo: 'Atendido', status: 'País atendido', x: 246, y: 302, type: 'atendido' },
-  { id: 'chile', pais: 'Chile', cidade: 'Santiago', tipo: 'Matriz', status: 'Origem da operação', x: 120, y: 378, type: 'matriz' },
+  { id: 'brasil', x: 360, y: 250, type: 'apoio' },
+  { id: 'argentina', x: 214, y: 452, type: 'apoio' },
+  { id: 'uruguai', x: 272, y: 446, type: 'atendido' },
+  { id: 'paraguai', x: 246, y: 302, type: 'atendido' },
+  { id: 'chile', x: 120, y: 378, type: 'matriz' },
 ];
 
-/* Malha de rotas — só entre países vizinhos. Curvas suaves (rodovia),
-   sem "barrigas" de trajetória aérea. Todas terminam em um hub. */
+const MAP_LABELS = [
+  { id: 'chile', x: 94, y: 352, anchor: 'middle', transform: 'rotate(-74 94 352)' },
+  { id: 'argentina', x: 176, y: 470, anchor: 'middle' },
+  { id: 'brasil', x: 350, y: 202, anchor: 'middle' },
+  { id: 'paraguai', x: 228, y: 254, anchor: 'middle' },
+  { id: 'uruguai', x: 334, y: 418, anchor: 'start' },
+];
+
+/* Malha de rotas — só entre países vizinhos, curvas suaves de rodovia. */
 const CL_AR = 'M 120 378 Q 166 428 214 452';
 const AR_BR = 'M 214 452 Q 292 356 360 250';
 const AR_UY = 'M 214 452 Q 244 451 272 446';
@@ -32,12 +39,10 @@ const EDGES = [
   { id: 'br-py', from: 'brasil', to: 'paraguai', d: BR_PY, tier: 'secondary' },
 ];
 
-/* Trajetos contínuos dos caminhões (hub → hub). */
-const TRUCK_A = 'M 120 378 Q 166 428 214 452 Q 292 356 360 250'; // Chile → Argentina → Brasil
-const TRUCK_B = AR_UY; // Argentina → Uruguai
-const TRUCK_C = BR_PY; // Brasil → Paraguai
+const TRUCK_A = 'M 120 378 Q 166 428 214 452 Q 292 356 360 250';
+const TRUCK_B = AR_UY;
+const TRUCK_C = BR_PY;
 
-/* Silhueta do Cone Sul (estilizada, minimalista). */
 const LAND =
   'M 102 238 L 152 184 L 216 152 L 286 148 L 346 162 L 392 192 L 408 240 L 396 292 L 366 330 L 344 366 L 330 400 L 316 430 L 300 446 L 292 470 L 268 500 L 238 526 L 212 548 L 190 502 L 150 430 L 116 362 L 100 300 Z';
 
@@ -62,6 +67,8 @@ function Truck({ reduce, routeId, dur, startX, startY }) {
 }
 
 export function RedeEscritorios() {
+  const pt = useContent();
+  const { offices } = pt;
   const [active, setActive] = useState(null);
   const reduce = useMediaQuery('(prefers-reduced-motion: reduce)');
   const atendidos = paisesAtendidos.filter((p) => !oficinas.some((o) => o.pais === p.nome));
@@ -79,9 +86,9 @@ export function RedeEscritorios() {
     <section id="atuacao" className={styles.section}>
       <div className="container">
         <header className={styles.head} data-reveal>
-          <span className={styles.eyebrow}>{pt.offices.eyebrow}</span>
-          <h2 className={styles.title}>{pt.offices.title}</h2>
-          <p className={styles.subtitle}>{pt.offices.subtitle}</p>
+          <span className={styles.eyebrow}>{offices.eyebrow}</span>
+          <h2 className={styles.title}>{offices.title}</h2>
+          <p className={styles.subtitle}>{offices.subtitle}</p>
         </header>
 
         <div className={styles.grid}>
@@ -92,7 +99,7 @@ export function RedeEscritorios() {
                 className={styles.map}
                 viewBox="0 0 480 600"
                 role="img"
-                aria-label="Rede de rotas da Mondel pelo Cone Sul, conectando Chile, Argentina, Brasil, Uruguai e Paraguai"
+                aria-label="Rede de rotas da Mondel pelo Cone Sul"
               >
                 <defs>
                   <path id="truckA" d={TRUCK_A} />
@@ -100,7 +107,6 @@ export function RedeEscritorios() {
                   <path id="truckC" d={TRUCK_C} />
                 </defs>
 
-                {/* --- Camada 1: base cartográfica (apagada) --- */}
                 <g className={styles.mapBase} aria-hidden="true">
                   <g className={styles.contours}>
                     <path d="M20 130 C 160 90, 320 190, 470 120" />
@@ -116,25 +122,14 @@ export function RedeEscritorios() {
                     <path d="M 214 300 L 302 300" />
                   </g>
                   <g className={styles.labels}>
-                    <text transform="rotate(-74 94 352)" x="94" y="352" textAnchor="middle">
-                      CHILE
-                    </text>
-                    <text x="176" y="470" textAnchor="middle">
-                      ARGENTINA
-                    </text>
-                    <text x="350" y="202" textAnchor="middle">
-                      BRASIL
-                    </text>
-                    <text x="228" y="254" textAnchor="middle">
-                      PARAGUAI
-                    </text>
-                    <text x="334" y="418" textAnchor="start">
-                      URUGUAI
-                    </text>
+                    {MAP_LABELS.map((l) => (
+                      <text key={l.id} x={l.x} y={l.y} textAnchor={l.anchor} transform={l.transform}>
+                        {offices.countries[l.id].toUpperCase()}
+                      </text>
+                    ))}
                   </g>
                 </g>
 
-                {/* --- Camada 2: rede de rotas --- */}
                 <g aria-hidden="true">
                   {EDGES.map((e) => {
                     const state = edgeState(e);
@@ -147,12 +142,10 @@ export function RedeEscritorios() {
                   })}
                 </g>
 
-                {/* --- Camada 3: caminhões --- */}
-                <Truck reduce={reduce} routeId="truckA" dur="17s" startX={120} startY={378} />
+                <Truck reduce={reduce} routeId="truckA" dur="16s" startX={120} startY={378} />
                 <Truck reduce={reduce} routeId="truckB" dur="10s" startX={214} startY={452} />
                 <Truck reduce={reduce} routeId="truckC" dur="12s" startX={360} startY={250} />
 
-                {/* --- Camada 4: hubs (pontos) --- */}
                 {NODES.map((n) => (
                   <g
                     key={n.id}
@@ -163,17 +156,15 @@ export function RedeEscritorios() {
                     onBlur={leave(n.id)}
                     tabIndex={0}
                     role="button"
-                    aria-label={`${n.pais} — ${n.tipo}`}
+                    aria-label={`${offices.countries[n.id]} — ${offices.tipos[n.type]}`}
                   >
                     <circle className={styles.hit} cx={n.x} cy={n.y} r="15" />
                     {n.type === 'matriz' && (
                       <>
-                        <circle className={styles.radar} cx={n.x} cy={n.y} r="6.5" />
-                        <circle className={`${styles.radar} ${styles.radar2}`} cx={n.x} cy={n.y} r="6.5" />
-                        <circle className={styles.beacon} cx={n.x} cy={n.y} r="9" />
+                        <circle className={styles.beacon} cx={n.x} cy={n.y} r="11" />
+                        <circle className={styles.ring} cx={n.x} cy={n.y} r="7" />
                       </>
                     )}
-                    {n.type === 'apoio' && <circle className={styles.hubRing} cx={n.x} cy={n.y} r="9" />}
                     <circle
                       className={`${styles.dot} ${styles[n.type]}`}
                       cx={n.x}
@@ -185,7 +176,6 @@ export function RedeEscritorios() {
               </svg>
             </div>
 
-            {/* Tooltip (fora do mapInner p/ não ser cortado) */}
             {activeNode && (
               <div
                 className={styles.tooltip}
@@ -194,13 +184,13 @@ export function RedeEscritorios() {
                   top: `${(activeNode.y / 600) * 100}%`,
                 }}
               >
-                <span className={styles.ttPais}>{activeNode.pais}</span>
+                <span className={styles.ttPais}>{offices.countries[activeNode.id]}</span>
                 <span className={`${styles.ttTipo} ${styles[`tt_${activeNode.type}`]}`}>
-                  {activeNode.tipo}
+                  {offices.tipos[activeNode.type]}
                 </span>
                 <span className={styles.ttStatus}>
                   <i className={styles.ttDot} aria-hidden="true" />
-                  {activeNode.status}
+                  {offices.status[activeNode.type]}
                 </span>
               </div>
             )}
@@ -208,7 +198,7 @@ export function RedeEscritorios() {
 
           {/* ---------- Unidades ---------- */}
           <div className={styles.info}>
-            <span className={styles.infoEyebrow}>Nossas unidades</span>
+            <span className={styles.infoEyebrow}>{offices.units}</span>
             <ul className={styles.units}>
               {oficinas.map((o, i) => (
                 <li
@@ -227,10 +217,10 @@ export function RedeEscritorios() {
                   />
                   {o.principal && (
                     <span className={styles.badge}>
-                      <Star size={11} strokeWidth={2.6} /> Matriz
+                      <Star size={11} strokeWidth={2.6} /> {offices.tipos.matriz}
                     </span>
                   )}
-                  <span className={styles.unitCountry}>{o.pais}</span>
+                  <span className={styles.unitCountry}>{offices.countries[o.id]}</span>
                   <span className={styles.unitCity}>{o.cidade}</span>
                   <span className={styles.unitAddr}>
                     <MapPin size={14} strokeWidth={2} aria-hidden="true" />
@@ -241,11 +231,11 @@ export function RedeEscritorios() {
             </ul>
 
             <div className={styles.also} data-reveal>
-              <span className={styles.alsoLabel}>Também atendemos</span>
+              <span className={styles.alsoLabel}>{offices.alsoServe}</span>
               <div className={styles.chips}>
                 {atendidos.map((p) => (
-                  <span key={p.nome} className={styles.chip}>
-                    {p.nome}
+                  <span key={p.id} className={styles.chip}>
+                    {offices.countries[p.id]}
                   </span>
                 ))}
               </div>

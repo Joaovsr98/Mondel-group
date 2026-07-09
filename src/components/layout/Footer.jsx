@@ -1,5 +1,5 @@
 import { MessageCircle, Mail, Instagram, Linkedin, MapPin } from 'lucide-react';
-import { pt } from '../../content/pt.js';
+import { useContent } from '../../i18n/LanguageContext.jsx';
 import { empresa } from '../../data/empresa.js';
 import { servicos } from '../../data/servicos.js';
 import { whatsappLink, mailLink } from '../../utils/contactLinks.js';
@@ -7,6 +7,7 @@ import Logo from '../ui/Logo.jsx';
 import styles from './Footer.module.css';
 
 export function Footer() {
+  const pt = useContent();
   const year = new Date().getFullYear();
   const { footer } = pt;
 
@@ -34,7 +35,7 @@ export function Footer() {
           <ul>
             {servicos.map((s) => (
               <li key={s.id}>
-                <a href="#servicos">{s.title}</a>
+                <a href="#servicos">{pt.services.items[s.id].title}</a>
               </li>
             ))}
           </ul>
@@ -49,7 +50,7 @@ export function Footer() {
               </li>
             ))}
             <li>
-              <a href="#cotacao">Cotação</a>
+              <a href="#cotacao">{footer.quote}</a>
             </li>
           </ul>
         </div>

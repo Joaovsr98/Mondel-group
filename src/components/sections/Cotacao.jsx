@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { MessageCircle, ShieldCheck, MapPin, ChevronDown } from 'lucide-react';
-import { pt } from '../../content/pt.js';
+import { useContent } from '../../i18n/LanguageContext.jsx';
 import { paisesCidades, cidadesDoPais, OUTRA_CIDADE } from '../../data/paisesCidades.js';
 import { buildQuoteWhatsapp } from '../../utils/contactLinks.js';
 import { onPrefillCargo } from '../../utils/quotePrefill.js';
@@ -34,6 +34,7 @@ function formatTons(raw) {
 }
 
 export function Cotacao() {
+  const pt = useContent();
   const { quote } = pt;
   const [form, setForm] = useState(emptyForm);
   const [error, setError] = useState('');
@@ -65,7 +66,7 @@ export function Cotacao() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!form.name.trim() || !form.phone.trim()) {
-      setError('Preencha ao menos seu nome e telefone para continuarmos.');
+      setError(quote.error);
       return;
     }
     const payload = {
@@ -73,7 +74,7 @@ export function Cotacao() {
       originCity: resolveCity(form.originCity, form.originCityOther),
       destCity: resolveCity(form.destCity, form.destCityOther),
     };
-    window.open(buildQuoteWhatsapp(payload), '_blank', 'noopener,noreferrer');
+    window.open(buildQuoteWhatsapp(payload, pt.quoteMessage), '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -136,7 +137,7 @@ export function Cotacao() {
               <span className={styles.label}>{quote.fields.cargoType}</span>
               <div className={styles.selectWrap}>
                 <select className={styles.input} value={form.cargoType} onChange={update('cargoType')}>
-                  <option value="">Selecione…</option>
+                  <option value="">{quote.select}</option>
                   {quote.cargoOptions.map((opt) => (
                     <option key={opt} value={opt}>
                       {opt}
@@ -169,7 +170,7 @@ export function Cotacao() {
                 <span className={styles.label}>{quote.fields.urgency}</span>
                 <div className={styles.selectWrap}>
                   <select className={styles.input} value={form.urgency} onChange={update('urgency')}>
-                    <option value="">Selecione…</option>
+                    <option value="">{quote.select}</option>
                     {quote.urgencyOptions.map((opt) => (
                       <option key={opt} value={opt}>
                         {opt}
