@@ -44,7 +44,7 @@ export function Sobre() {
               const Icon = icons[v.icon];
               return (
                 <article
-                  key={v.title}
+                  key={v.icon}
                   className={styles.value}
                   data-reveal
                   data-reveal-delay={i + 1}

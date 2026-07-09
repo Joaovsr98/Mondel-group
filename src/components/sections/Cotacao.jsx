@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { MessageCircle, ShieldCheck, MapPin, ChevronDown } from 'lucide-react';
-import { useContent } from '../../i18n/LanguageContext.jsx';
+import { useContent, useLang } from '../../i18n/LanguageContext.jsx';
 import { paisesCidades, cidadesDoPais, OUTRA_CIDADE } from '../../data/paisesCidades.js';
 import { buildQuoteWhatsapp } from '../../utils/contactLinks.js';
 import { onPrefillCargo } from '../../utils/quotePrefill.js';
@@ -35,6 +35,7 @@ function formatTons(raw) {
 
 export function Cotacao() {
   const pt = useContent();
+  const { lang } = useLang();
   const { quote } = pt;
   const [form, setForm] = useState(emptyForm);
   const [error, setError] = useState('');
@@ -120,6 +121,7 @@ export function Cotacao() {
               onCity={update('originCity')}
               onCityOther={update('originCityOther')}
               quote={quote}
+              lang={lang}
             />
 
             <RouteBlock
@@ -131,6 +133,7 @@ export function Cotacao() {
               onCity={update('destCity')}
               onCityOther={update('destCityOther')}
               quote={quote}
+              lang={lang}
             />
 
             <label className={styles.field}>
@@ -210,8 +213,8 @@ export function Cotacao() {
 }
 
 /** Bloco Origem/Destino com seletor dependente país → cidade. */
-function RouteBlock({ legend, country, city, cityOther, onCountry, onCity, onCityOther, quote }) {
-  const cities = cidadesDoPais(country);
+function RouteBlock({ legend, country, city, cityOther, onCountry, onCity, onCityOther, quote, lang }) {
+  const cities = cidadesDoPais(country, lang);
   const isOther = city === OUTRA_CIDADE;
 
   return (
@@ -228,8 +231,8 @@ function RouteBlock({ legend, country, city, cityOther, onCountry, onCity, onCit
             <select className={styles.input} value={country} onChange={onCountry}>
               <option value="">{quote.fields.selectCountry}</option>
               {paisesCidades.map((p) => (
-                <option key={p.code} value={p.nome}>
-                  {p.nome}
+                <option key={p.code} value={p.nome[lang] || p.nome.pt}>
+                  {p.nome[lang] || p.nome.pt}
                 </option>
               ))}
             </select>

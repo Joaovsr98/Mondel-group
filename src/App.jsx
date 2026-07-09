@@ -1,4 +1,5 @@
 import { useReveal } from './hooks/useReveal.js';
+import { useLang } from './i18n/LanguageContext.jsx';
 
 import Header from './components/layout/Header.jsx';
 import Footer from './components/layout/Footer.jsx';
@@ -17,7 +18,8 @@ import Cotacao from './components/sections/Cotacao.jsx';
 import Contato from './components/sections/Contato.jsx';
 
 export default function App() {
-  useReveal();
+  const { lang } = useLang();
+  useReveal(lang);
 
   return (
     <>

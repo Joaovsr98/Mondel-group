@@ -79,7 +79,7 @@ export function Contato() {
               const Icon = c.icon;
               return (
                 <a
-                  key={c.label}
+                  key={i}
                   href={c.href}
                   className={`${styles.channel} ${styles[c.accent]}`}
                   data-reveal
