@@ -104,7 +104,7 @@ export function Hero() {
         </dl>
       </div>
 
-      <a href="#travessia" className={styles.scroll} aria-label="Rolar para A Travessia">
+      <a href="#travessia" className={styles.scroll} aria-label={pt.ui.scrollAria}>
         <span className={styles.mouse} aria-hidden="true">
           <span className={styles.wheel} />
         </span>

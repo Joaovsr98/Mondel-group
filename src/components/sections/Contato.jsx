@@ -103,7 +103,7 @@ export function Contato() {
             <iframe
               className={styles.map}
               src={mapEmbedUrl()}
-              title="Localização da matriz Mondel Group no Google Maps"
+              title={contact.mapTitle}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen

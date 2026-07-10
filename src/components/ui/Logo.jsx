@@ -1,3 +1,4 @@
+import { useContent } from '../../i18n/LanguageContext.jsx';
 import styles from './Logo.module.css';
 import logoUrl from '../../assets/logo/mondel-group.webp';
 
@@ -11,13 +12,14 @@ import logoUrl from '../../assets/logo/mondel-group.webp';
    --------------------------------------------------------------------- */
 
 export function Logo({ variant = 'dark', className = '' }) {
+  const pt = useContent();
   const isLight = variant === 'light';
 
   return (
     <a
       href="#inicio"
       className={`${styles.logo} ${isLight ? styles.light : ''} ${className}`}
-      aria-label="Mondel Group — página inicial"
+      aria-label={pt.ui.homeAria}
     >
       <img src={logoUrl} alt="Mondel Group" className={styles.img} />
     </a>

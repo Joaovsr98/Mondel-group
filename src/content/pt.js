@@ -300,6 +300,7 @@ export const pt = {
     title: 'Fale com especialistas em transporte no Mercosul',
     subtitle: 'Estamos prontos para atender sua operação. Escolha o canal de sua preferência.',
     mapLink: 'Abrir no Google Maps',
+    mapTitle: 'Localização da Mondel Group no Google Maps',
     labels: {
       whatsapp: 'WhatsApp',
       phone: 'Telefone',
@@ -336,6 +337,10 @@ export const pt = {
     scrollAria: 'Rolar para baixo',
     menuOpen: 'Abrir menu',
     menuClose: 'Fechar menu',
+    homeAria: 'Mondel Group — página inicial',
+    mainMenu: 'Menu principal',
+    mobileMenu: 'Menu mobile',
+    whatsapp: 'Falar no WhatsApp',
   },
 
   quoteMessage: {

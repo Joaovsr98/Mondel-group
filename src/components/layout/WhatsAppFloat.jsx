@@ -11,7 +11,7 @@ export function WhatsAppFloat() {
       href={whatsappLink(pt.whatsappFloat.message)}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Falar no WhatsApp"
+      aria-label={pt.ui.whatsapp}
     >
       <span className={styles.ring} aria-hidden="true" />
       <MessageCircle size={28} strokeWidth={2.2} className={styles.icon} />

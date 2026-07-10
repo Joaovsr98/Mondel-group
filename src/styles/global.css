@@ -60,19 +60,19 @@ strong {
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  font-family: var(--font-display);
-  font-weight: 700;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
   font-size: var(--fs-eyebrow);
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-red-600);
+  color: var(--color-blue-700);
 }
 
 .eyebrow::before {
   content: '';
-  width: 26px;
-  height: 2px;
+  width: 24px;
+  height: 1px;
   background: var(--color-red-600);
 }
 

@@ -1,16 +1,17 @@
 import { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import pt from '../content/pt.js';
 import es from '../content/es.js';
+import en from '../content/en.js';
 
 /* =====================================================================
    i18n — provedor de idioma.
-   Idiomas disponíveis: pt (padrão) e es. EN entra no futuro.
+   Idiomas disponíveis: pt (padrão), es e en.
    Persiste a escolha em localStorage e ajusta <html lang>.
    ===================================================================== */
 
-const BUNDLES = { pt, es };
+const BUNDLES = { pt, es, en };
 const STORAGE_KEY = 'mondel_lang';
-const HTML_LANG = { pt: 'pt-BR', es: 'es' };
+const HTML_LANG = { pt: 'pt-BR', es: 'es', en: 'en' };
 
 const LanguageContext = createContext({ lang: 'pt', setLang: () => {}, c: pt });
 

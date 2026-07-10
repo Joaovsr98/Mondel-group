@@ -3,10 +3,10 @@ import { useLang } from '../../i18n/LanguageContext.jsx';
 import styles from './LangSwitch.module.css';
 
 const LANGS = ['PT', 'ES', 'EN'];
-const AVAILABLE = { PT: 'pt', ES: 'es' }; // EN entra no futuro
+const AVAILABLE = { PT: 'pt', ES: 'es', EN: 'en' };
 
 /**
- * Seletor de idiomas — PT/ES funcionais; EN mostra "em breve".
+ * Seletor de idiomas — PT/ES/EN funcionais.
  * Sem bandeiras, texto em mono. Vermelho escasso (sublinhado do ativo).
  */
 export function LangSwitch({ variant = 'light', className = '' }) {

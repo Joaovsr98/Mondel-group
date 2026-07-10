@@ -27,7 +27,7 @@ export function Header() {
       <div className={`container ${styles.inner}`}>
         <Logo variant={scrolled ? 'dark' : 'light'} />
 
-        <nav className={styles.navDesktop} aria-label="Menu principal">
+        <nav className={styles.navDesktop} aria-label={pt.ui.mainMenu}>
           {pt.nav.map((item) => (
             <a key={item.href} href={item.href} className={styles.link}>
               {item.label}
@@ -54,7 +54,7 @@ export function Header() {
 
       {/* Menu mobile */}
       <div className={`${styles.mobilePanel} ${open ? styles.mobileOpen : ''}`}>
-        <nav className={styles.navMobile} aria-label="Menu mobile">
+        <nav className={styles.navMobile} aria-label={pt.ui.mobileMenu}>
           {pt.nav.map((item) => (
             <a key={item.href} href={item.href} className={styles.mobileLink} onClick={close}>
               {item.label}
