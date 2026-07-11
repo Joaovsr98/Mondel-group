@@ -11,17 +11,17 @@
    ===================================================================== */
 
 export const galeria = [
-  { id: 'rota', label: 'Operação em rota', span: 'wide', image: null },
-  { id: 'frota', label: 'Frota Mondel', span: '', image: null },
-  { id: 'frio', label: 'Cadeia do frio', span: '', image: null },
-  { id: 'aduana', label: 'Despacho aduaneiro', span: '', image: null },
+  { id: 'rota', label: 'Operação em rota', span: 'wide', image: '/images/rota-cordilheira.webp' },
+  { id: 'frota', label: 'Frota Mondel', span: '', image: '/images/patio-frota.webp' },
+  { id: 'frio', label: 'Cadeia do frio', span: 'tall', image: '/images/andes-inverno.webp' },
+  { id: 'aduana', label: 'Despacho aduaneiro', span: '', image: '/images/aduana-tambores.webp' },
   {
     id: 'carregamento',
     label: 'Carregamento na operação',
-    span: 'tall',
-    image: '/images/operacao-doca.webp',
+    span: '',
+    image: '/images/carregamento-bigbags.webp',
   },
-  { id: 'rastreamento', label: 'Rastreamento 24/7', span: '', image: null },
+  { id: 'rastreamento', label: 'Rastreamento 24/7', span: '', image: '/images/operacao-doca.webp' },
 ];
 
 export default galeria;

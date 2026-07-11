@@ -5,15 +5,15 @@
 
 import { empresa } from '../data/empresa.js';
 
-/** Link do WhatsApp com mensagem opcional pré-preenchida. */
-export function whatsappLink(message = '') {
-  const base = `https://wa.me/${empresa.whatsappRaw}`;
+/** Link do WhatsApp com mensagem opcional. Aceita outro número (só dígitos); usa o do Brasil por padrão. */
+export function whatsappLink(message = '', raw = empresa.whatsappRaw) {
+  const base = `https://wa.me/${raw}`;
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 }
 
-/** Link de telefone clicável. */
-export function telLink() {
-  return `tel:+${empresa.telRaw}`;
+/** Link de telefone clicável. Aceita um número (só dígitos); usa o do Brasil por padrão. */
+export function telLink(raw = empresa.telRaw) {
+  return `tel:+${raw}`;
 }
 
 /** Link de e-mail clicável com assunto opcional. */

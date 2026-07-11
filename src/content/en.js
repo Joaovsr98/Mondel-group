@@ -302,8 +302,10 @@ export const en = {
     mapLink: 'Open in Google Maps',
     mapTitle: 'Mondel Group location on Google Maps',
     labels: {
-      whatsapp: 'WhatsApp',
+      whatsapp: 'WhatsApp · Brazil',
+      whatsappAr: 'WhatsApp · Argentina',
       phone: 'Phone',
+      matrizPhone: 'Headquarters · Chile',
       email: 'Email',
       instagram: 'Instagram',
       linkedin: 'LinkedIn',
@@ -322,6 +324,40 @@ export const en = {
     quote: 'Quote',
     rights: 'All rights reserved.',
     developer: 'Crafted with excellence',
+    privacy: 'Privacy Policy',
+  },
+
+  privacy: {
+    title: 'Privacy Policy',
+    updated: 'Last updated: July 2026',
+    intro:
+      'Mondel Group respects your privacy and handles personal data in accordance with the Brazilian General Data Protection Law (LGPD — Law No. 13.709/2018).',
+    sections: [
+      {
+        heading: 'Data we collect',
+        body: 'We collect only the data you voluntarily provide in the quote form: name, company, phone, email and cargo details (origin, destination, type, weight and notes).',
+      },
+      {
+        heading: 'How we use your data',
+        body: 'We use this data exclusively to respond to your quote request and follow up commercially. We do not use it for any other purpose.',
+      },
+      {
+        heading: 'Sharing',
+        body: 'We do not sell or share your data with third parties. The form information is sent directly to our commercial team via WhatsApp.',
+      },
+      {
+        heading: 'Your rights',
+        body: 'You may request access to, correction of, or deletion of your data at any time by contacting us through our official channels.',
+      },
+      {
+        heading: 'Cookies and storage',
+        body: 'This site does not use tracking or advertising cookies. We only use the local storage needed to remember your chosen language.',
+      },
+      {
+        heading: 'Contact',
+        body: 'For privacy matters, reach us at contato@mondelgroup.com or via the WhatsApp shown on the site.',
+      },
+    ],
   },
 
   whatsappFloat: {
@@ -334,6 +370,9 @@ export const en = {
     viewDetails: 'View details',
     close: 'Close',
     editable: 'Editable — real photo',
+    openImage: 'Open image',
+    prevImage: 'Previous image',
+    nextImage: 'Next image',
     scrollAria: 'Scroll down',
     menuOpen: 'Open menu',
     menuClose: 'Close menu',

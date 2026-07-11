@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Fotos originais (fonte, não vão para o deploy)
+fotos-originais/

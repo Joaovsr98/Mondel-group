@@ -302,8 +302,10 @@ export const pt = {
     mapLink: 'Abrir no Google Maps',
     mapTitle: 'Localização da Mondel Group no Google Maps',
     labels: {
-      whatsapp: 'WhatsApp',
+      whatsapp: 'WhatsApp · Brasil',
+      whatsappAr: 'WhatsApp · Argentina',
       phone: 'Telefone',
+      matrizPhone: 'Matriz · Chile',
       email: 'E-mail',
       instagram: 'Instagram',
       linkedin: 'LinkedIn',
@@ -322,6 +324,40 @@ export const pt = {
     quote: 'Cotação',
     rights: 'Todos os direitos reservados.',
     developer: 'Desenvolvido com excelência',
+    privacy: 'Política de Privacidade',
+  },
+
+  privacy: {
+    title: 'Política de Privacidade',
+    updated: 'Última atualização: julho de 2026',
+    intro:
+      'A Mondel Group respeita a sua privacidade e trata os dados pessoais de acordo com a Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).',
+    sections: [
+      {
+        heading: 'Dados que coletamos',
+        body: 'Coletamos apenas os dados que você informa voluntariamente no formulário de cotação: nome, empresa, telefone, e-mail e detalhes da carga (origem, destino, tipo, peso e observações).',
+      },
+      {
+        heading: 'Como usamos seus dados',
+        body: 'Utilizamos esses dados exclusivamente para responder à sua solicitação de cotação e dar seguimento comercial ao atendimento. Não os usamos para outras finalidades.',
+      },
+      {
+        heading: 'Compartilhamento',
+        body: 'Não vendemos nem compartilhamos seus dados com terceiros. As informações do formulário são enviadas diretamente à nossa equipe comercial pelo WhatsApp.',
+      },
+      {
+        heading: 'Seus direitos',
+        body: 'Você pode solicitar a qualquer momento o acesso, a correção ou a exclusão dos seus dados, bastando entrar em contato pelos nossos canais oficiais.',
+      },
+      {
+        heading: 'Cookies e armazenamento',
+        body: 'Este site não utiliza cookies de rastreamento ou publicidade. Empregamos apenas o armazenamento local necessário para lembrar o idioma escolhido.',
+      },
+      {
+        heading: 'Contato',
+        body: 'Para questões sobre privacidade, fale conosco pelo e-mail contato@mondelgroup.com ou pelo WhatsApp informado no site.',
+      },
+    ],
   },
 
   whatsappFloat: {
@@ -334,6 +370,9 @@ export const pt = {
     viewDetails: 'Ver detalhes',
     close: 'Fechar',
     editable: 'Editável — foto real',
+    openImage: 'Ampliar imagem',
+    prevImage: 'Imagem anterior',
+    nextImage: 'Próxima imagem',
     scrollAria: 'Rolar para baixo',
     menuOpen: 'Abrir menu',
     menuClose: 'Fechar menu',

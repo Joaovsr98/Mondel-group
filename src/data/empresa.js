@@ -15,6 +15,14 @@ export const empresa = {
   telDisplay: '+55 (11) 97056-1211',
   email: 'contato@mondelgroup.com',
 
+  // WhatsApp Argentina (celular — Buenos Aires)
+  whatsappArRaw: '5491137923478',
+  whatsappArDisplay: '+54 9 11 3792-3478',
+
+  // Matriz (Chile) — telefone fixo
+  matrizTelRaw: '56342530763',
+  matrizTelDisplay: '+56 (34) 253 0763',
+
   // Redes sociais
   instagramUser: '@mondelgroup.br',
   instagramUrl: 'https://www.instagram.com/mondelgroup.br',

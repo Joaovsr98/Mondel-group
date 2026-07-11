@@ -26,14 +26,14 @@ export const frota = [
     nome: 'Carreta Sider',
     specs: 'Carga paletizada • lona lateral',
     icon: 'Container',
-    image: null,
+    image: '/images/sider-terminal.webp',
   },
   {
     id: 'graneleiro',
     nome: 'Cavalo Mecânico',
     specs: 'Longa distância • rotas internacionais',
     icon: 'Truck',
-    image: null,
+    image: '/images/frota-cavalos.webp',
   },
 ];
 

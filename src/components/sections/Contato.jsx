@@ -25,10 +25,25 @@ export function Contato() {
       accent: 'whatsapp',
     },
     {
+      icon: MessageCircle,
+      label: contact.labels.whatsappAr,
+      value: empresa.whatsappArDisplay,
+      href: whatsappLink(pt.whatsappFloat.message, empresa.whatsappArRaw),
+      external: true,
+      accent: 'whatsapp',
+    },
+    {
       icon: Phone,
       label: contact.labels.phone,
       value: empresa.telDisplay,
       href: telLink(),
+      accent: 'blue',
+    },
+    {
+      icon: Phone,
+      label: contact.labels.matrizPhone,
+      value: empresa.matrizTelDisplay,
+      href: telLink(empresa.matrizTelRaw),
       accent: 'blue',
     },
     {

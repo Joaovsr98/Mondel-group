@@ -106,6 +106,27 @@
   font-size: 0.82rem;
 }
 
+.bottomLinks {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.privacyLink {
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.62);
+  cursor: pointer;
+  transition: color 0.2s var(--ease, ease);
+}
+
+.privacyLink:hover {
+  color: #fff;
+}
+
 @media (max-width: 900px) {
   .top {
     grid-template-columns: 1fr 1fr;

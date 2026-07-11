@@ -67,6 +67,47 @@
   border-radius: var(--radius-pill);
 }
 
+/* Botão que cobre a foto e abre o lightbox */
+.openBtn {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: zoom-in;
+}
+
+.openBtn:focus-visible {
+  outline: 2px solid var(--color-ice-bright, #7fb0ff);
+  outline-offset: -3px;
+}
+
+.expandIcon {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-pill);
+  background: rgba(6, 12, 26, 0.5);
+  color: #fff;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    opacity var(--motion-base, 0.28s) var(--ease),
+    transform var(--motion-base, 0.28s) var(--ease);
+}
+
+.tile:hover .expandIcon,
+.openBtn:focus-visible .expandIcon {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .caption {
   position: absolute;
   left: 0;

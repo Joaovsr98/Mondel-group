@@ -1,15 +1,18 @@
+import { useState } from 'react';
 import { MessageCircle, Mail, Instagram, Linkedin, MapPin } from 'lucide-react';
 import { useContent } from '../../i18n/LanguageContext.jsx';
 import { empresa } from '../../data/empresa.js';
 import { servicos } from '../../data/servicos.js';
 import { whatsappLink, mailLink } from '../../utils/contactLinks.js';
 import Logo from '../ui/Logo.jsx';
+import PrivacyModal from './PrivacyModal.jsx';
 import styles from './Footer.module.css';
 
 export function Footer() {
   const pt = useContent();
   const year = new Date().getFullYear();
   const { footer } = pt;
+  const [privacyOpen, setPrivacyOpen] = useState(false);
 
   return (
     <footer className={styles.footer}>
@@ -80,9 +83,16 @@ export function Footer() {
           <p>
             © {year} {empresa.razaoSocial}. {footer.rights}
           </p>
-          <p className={styles.dev}>{footer.developer}</p>
+          <div className={styles.bottomLinks}>
+            <button type="button" className={styles.privacyLink} onClick={() => setPrivacyOpen(true)}>
+              {footer.privacy}
+            </button>
+            <span className={styles.dev}>{footer.developer}</span>
+          </div>
         </div>
       </div>
+
+      <PrivacyModal open={privacyOpen} onClose={() => setPrivacyOpen(false)} />
     </footer>
   );
 }
