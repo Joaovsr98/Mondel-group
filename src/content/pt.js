@@ -197,8 +197,11 @@ export const pt = {
       frota: 'Frota Mondel',
       frio: 'Cadeia do frio',
       aduana: 'Despacho aduaneiro',
+      terminal: 'Operação no terminal',
       carregamento: 'Carregamento na operação',
+      armazenagem: 'Armazenagem e distribuição',
       rastreamento: 'Rastreamento 24/7',
+      consolidada: 'Carga consolidada',
     },
   },
 

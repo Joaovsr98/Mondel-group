@@ -25,3 +25,6 @@ dist-ssr
 
 # Fotos originais (fonte, não vão para o deploy)
 fotos-originais/
+
+# Material da apresentação comercial (não faz parte do site)
+apresentacao/

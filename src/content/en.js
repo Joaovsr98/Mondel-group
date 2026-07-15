@@ -197,8 +197,11 @@ export const en = {
       frota: 'Mondel fleet',
       frio: 'Cold chain',
       aduana: 'Customs clearance',
+      terminal: 'Terminal operation',
       carregamento: 'Loading in operation',
+      armazenagem: 'Warehousing & distribution',
       rastreamento: '24/7 tracking',
+      consolidada: 'Consolidated cargo',
     },
   },
 
