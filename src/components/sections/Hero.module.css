@@ -25,6 +25,31 @@
   z-index: -1;
 }
 
+/* Foto da operação nos Andes como marca d'água: desfocada e discreta,
+   por baixo da cartografia. O inset negativo + scale evitam que o blur
+   deixe as bordas transparentes. */
+.photo {
+  position: absolute;
+  inset: -3%;
+  background: url('/images/andes-inverno.webp') center 42% / cover no-repeat;
+  filter: blur(3px) saturate(0.75);
+  transform: scale(1.04);
+  opacity: 0.5;
+}
+
+/* Véu navy por cima da foto — segura o contraste do texto do Hero */
+.photoScrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(6, 15, 36, 0.92) 0%,
+    rgba(7, 19, 44, 0.78) 38%,
+    rgba(10, 27, 61, 0.42) 72%,
+    rgba(14, 35, 80, 0.28) 100%
+  );
+}
+
 .map {
   position: absolute;
   inset: 0;

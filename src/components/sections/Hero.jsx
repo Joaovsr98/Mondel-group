@@ -12,8 +12,11 @@ export function Hero() {
 
   return (
     <section id="inicio" className={styles.hero}>
-      {/* Fundo: navy + cartografia (curvas de nível) + linha-rota da marca */}
+      {/* Fundo: foto dos Andes (marca d'água) + navy + cartografia + linha-rota da marca */}
       <div className={styles.bg} aria-hidden="true">
+        <div className={styles.photo} />
+        <div className={styles.photoScrim} />
+
         <svg className={styles.map} viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
           <g className={styles.contours}>
             <path d="M-50 240 C 260 180, 520 300, 820 220 S 1300 120, 1500 210" />
