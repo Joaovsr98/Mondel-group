@@ -22,7 +22,7 @@ export const es = {
     eyebrow: 'Transporte internacional en el Cono Sur · Desde 1989',
     title: 'El nexo que conecta el Cono Sur.',
     subtitle:
-      'Transporte internacional entre Brasil, Argentina, Uruguay, Paraguay y Chile — con la confianza de quien cruza fronteras desde 1989.',
+      'Transporte internacional entre Brasil, Argentina, Uruguay, Paraguay y Chile, con la confianza de quien cruza fronteras desde 1989.',
     ctaPrimary: 'Solicitar cotización',
     ctaSecondary: 'Hablar por WhatsApp',
     stats: [

@@ -22,7 +22,7 @@ export const pt = {
     eyebrow: 'Transporte internacional no Cone Sul · Desde 1989',
     title: 'O elo que conecta o Cone Sul.',
     subtitle:
-      'Transporte internacional entre Brasil, Argentina, Uruguai, Paraguai e Chile — com a confiança de quem cruza fronteiras desde 1989.',
+      'Transporte internacional entre Brasil, Argentina, Uruguai, Paraguai e Chile, com a confiança de quem cruza fronteiras desde 1989.',
     ctaPrimary: 'Solicitar cotação',
     ctaSecondary: 'Falar no WhatsApp',
     stats: [

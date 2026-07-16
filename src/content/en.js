@@ -22,7 +22,7 @@ export const en = {
     eyebrow: 'International transport across the Southern Cone · Since 1989',
     title: 'The link that connects the Southern Cone.',
     subtitle:
-      'International transport between Brazil, Argentina, Uruguay, Paraguay and Chile — with the confidence of those who have crossed borders since 1989.',
+      'International transport between Brazil, Argentina, Uruguay, Paraguay and Chile, with the confidence of those who have crossed borders since 1989.',
     ctaPrimary: 'Request a quote',
     ctaSecondary: 'Chat on WhatsApp',
     stats: [
