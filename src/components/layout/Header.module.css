@@ -66,16 +66,16 @@
   gap: clamp(0.9rem, 1.6vw, 1.5rem);
 }
 
-/* Seletor de idioma dentro do menu mobile */
-.langMobile {
-  margin-top: auto;
-  padding-top: var(--space-md);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+/* ---------- Barra mobile (idioma + burger) ---------- */
+.mobileBar {
+  display: none;
+  align-items: center;
+  gap: 0.9rem;
+  margin-left: auto;
 }
 
 /* ---------- Burger ---------- */
 .burger {
-  display: none;
   color: #fff;
   padding: 6px;
 }
@@ -132,13 +132,21 @@
 }
 
 /* ---------- Responsivo ---------- */
+@media (min-width: 901px) {
+  .mobileBar {
+    display: none;
+  }
+}
+
 @media (max-width: 900px) {
   .navDesktop,
   .actions {
     display: none;
   }
+  .mobileBar {
+    display: inline-flex;
+  }
   .burger {
     display: inline-flex;
-    margin-left: auto;
   }
 }

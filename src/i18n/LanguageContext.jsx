@@ -13,14 +13,38 @@ const BUNDLES = { pt, es, en };
 const STORAGE_KEY = 'mondel_lang';
 const HTML_LANG = { pt: 'pt-BR', es: 'es', en: 'en' };
 
-const LanguageContext = createContext({ lang: 'pt', setLang: () => {}, c: pt });
+/** Idioma sugerido a partir do navegador — só serve para destacar uma opção. */
+export function detectLang() {
+  if (typeof navigator === 'undefined') return 'pt';
+  const tags = navigator.languages?.length ? navigator.languages : [navigator.language];
+  for (const tag of tags) {
+    const base = String(tag || '').toLowerCase().slice(0, 2);
+    if (BUNDLES[base]) return base;
+  }
+  return 'pt';
+}
+
+const LanguageContext = createContext({
+  lang: 'pt',
+  setLang: () => {},
+  chosen: true,
+  c: pt,
+});
 
 export function LanguageProvider({ children }) {
-  const [lang, setLangState] = useState(() => {
-    if (typeof window === 'undefined') return 'pt';
-    const saved = window.localStorage.getItem(STORAGE_KEY);
-    return saved && BUNDLES[saved] ? saved : 'pt';
+  // A escolha só existe se estiver no localStorage: sem isso não dá para
+  // diferenciar "escolheu português" de "nunca escolheu nada".
+  const [saved, setSaved] = useState(() => {
+    if (typeof window === 'undefined') return null;
+    try {
+      const v = window.localStorage.getItem(STORAGE_KEY);
+      return v && BUNDLES[v] ? v : null;
+    } catch {
+      return null;
+    }
   });
+
+  const lang = saved || 'pt';
 
   useEffect(() => {
     document.documentElement.lang = HTML_LANG[lang] || 'pt-BR';
@@ -28,23 +52,26 @@ export function LanguageProvider({ children }) {
 
   const setLang = useCallback((l) => {
     if (!BUNDLES[l]) return;
-    setLangState(l);
+    setSaved(l);
     try {
       window.localStorage.setItem(STORAGE_KEY, l);
     } catch {
-      /* ignore */
+      /* localStorage bloqueado: a escolha vale só nesta sessão */
     }
   }, []);
 
-  const value = useMemo(() => ({ lang, setLang, c: BUNDLES[lang] || pt }), [lang, setLang]);
+  const value = useMemo(
+    () => ({ lang, setLang, chosen: saved !== null, c: BUNDLES[lang] || pt }),
+    [lang, setLang, saved],
+  );
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }
 
-/** Retorna { lang, setLang }. */
+/** Retorna { lang, setLang, chosen }. */
 export function useLang() {
-  const { lang, setLang } = useContext(LanguageContext);
-  return { lang, setLang };
+  const { lang, setLang, chosen } = useContext(LanguageContext);
+  return { lang, setLang, chosen };
 }
 
 /** Retorna o bundle de conteúdo do idioma ativo (mesma forma do pt.js). */

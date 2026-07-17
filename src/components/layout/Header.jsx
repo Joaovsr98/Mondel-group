@@ -42,14 +42,19 @@ export function Header() {
           </Button>
         </div>
 
-        <button
-          className={styles.burger}
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? pt.ui.menuClose : pt.ui.menuOpen}
-          aria-expanded={open}
-        >
-          {open ? <X size={26} /> : <Menu size={26} />}
-        </button>
+        {/* Mobile: idioma sempre visível na barra, ao lado do menu — no
+            painel ele ficava escondido atrás do hambúrguer. */}
+        <div className={styles.mobileBar}>
+          <LangSwitch variant={scrolled ? 'dark' : 'light'} />
+          <button
+            className={styles.burger}
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? pt.ui.menuClose : pt.ui.menuOpen}
+            aria-expanded={open}
+          >
+            {open ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
       </div>
 
       {/* Menu mobile */}
@@ -64,7 +69,6 @@ export function Header() {
         <Button href="#cotacao" variant="primary" size="lg" icon={FileText} onClick={close}>
           {pt.hero.ctaPrimary}
         </Button>
-        <LangSwitch variant="light" className={styles.langMobile} />
       </div>
       {open && <button className={styles.overlay} aria-hidden="true" tabIndex={-1} onClick={close} />}
     </header>
