@@ -1,115 +1,134 @@
-# Mondel Group — Site Institucional
+# Mondel Group — Plataforma Institucional de Logística
 
-Site institucional premium para a **Mondel Group** (Mondel Logística S.A.), operadora de transporte internacional de cargas no Cone Sul desde 1989.
+Site institucional desenvolvido para a **Mondel Group**, com foco em apresentar sua atuação logística no Cone Sul por meio de uma experiência digital moderna, responsiva e orientada à conversão.
 
-Construído em **React + Vite + JavaScript + CSS Modules**, 100% responsivo, com SEO básico, animações suaves e foco em geração de contatos comerciais.
+O projeto combina identidade corporativa, experiência do usuário e funcionalidades comerciais em uma SPA construída com React.
 
----
+## 🌐 Projeto online
 
-## Como rodar (Windows)
+Acesse a versão publicada:
 
-Pré-requisito: ter o **Node.js 18+** instalado (https://nodejs.org).
+**https://mondel-group.vercel.app**
 
-Abra o terminal (PowerShell ou CMD) na pasta do projeto e rode:
-
-    npm install      # instala as dependências (só na primeira vez)
-    npm run dev      # inicia o servidor de desenvolvimento
-
-Depois abra o endereço que aparecer no terminal (geralmente http://localhost:5173).
-
-Outros comandos:
-
-    npm run build    # gera a versão de produção na pasta /dist
-    npm run preview  # pré-visualiza a build de produção
+> Recomendo visualizar tanto no desktop quanto no celular. Toda a interface foi desenvolvida de forma responsiva.
 
 ---
 
-## Deploy (Vercel — recomendado, gratuito)
+## Sobre o projeto
 
-1. Suba este projeto para um repositório no GitHub.
-2. Em https://vercel.com, clique em Add New > Project e importe o repositório.
-3. A Vercel detecta o Vite automaticamente. É só confirmar e publicar.
+A proposta foi transformar a presença digital da Mondel em uma experiência institucional mais moderna e profissional, comunicando sua operação logística de maneira clara e facilitando o contato de potenciais clientes.
 
-Não é necessário configurar nada — não há banco de dados, login ou variáveis de ambiente.
+Mais do que uma página institucional estática, o projeto foi pensado como uma experiência comercial completa:
 
----
-
-## Onde editar cada coisa
-
-O projeto foi organizado para ser fácil de editar, sem mexer nos componentes.
-
-| Quero mudar...                        | Edite o arquivo               |
-|---------------------------------------|-------------------------------|
-| Textos do site (títulos, frases)      | src/content/pt.js             |
-| Contatos (WhatsApp, e-mail, redes)    | src/data/empresa.js           |
-| Serviços (cartões)                    | src/data/servicos.js          |
-| Escritórios / endereços               | src/data/oficinas.js          |
-| Frota (veículos + fotos)              | src/data/frota.js             |
-| Depoimentos e FAQ                     | src/data/depoimentos.js       |
-| Cores e fontes (identidade visual)    | src/styles/variables.css      |
-
-### Trocar o logo
-
-O logo entra por um "slot" pronto. Quando tiver o arquivo oficial (idealmente .svg, ou .png com fundo transparente):
-
-1. Coloque o arquivo em src/assets/logo/ (ex.: mondel-group.svg).
-2. Abra src/components/ui/Logo.jsx e siga o comentário no topo do arquivo: descomente a linha de import do logo e troque o placeholder pela tag <img>.
-
-Enquanto o arquivo oficial não é inserido, o site mostra um placeholder tipográfico neutro (não imita o símbolo da marca).
-
-### Inserir as fotos da frota
-
-1. Coloque as imagens em src/assets/images/frota/.
-2. Em src/data/frota.js, importe cada imagem no topo e aponte o campo "image" para ela. Exemplo:
-
-    import carretaBau from '../assets/images/frota/carreta-bau.jpg';
-    // ...
-    { id: 'carreta-bau', nome: 'Carreta Baú', specs: '...', icon: 'Truck', image: carretaBau },
-
-Enquanto não houver foto (image: null), um placeholder estilizado é exibido.
+**apresentação da empresa → serviços → área de atuação → estrutura operacional → cotação → contato.**
 
 ---
 
-## Estrutura do projeto
+## Principais funcionalidades
 
-    src/
-    ├── assets/          Imagens e logo
-    ├── components/
-    │   ├── layout/      Header, Footer, WhatsApp flutuante
-    │   ├── ui/          Componentes reutilizáveis (Button, Logo, SectionTitle)
-    │   └── sections/    Seções da página (Hero, Serviços, Frota...)
-    ├── content/         Textos centralizados (pt.js) — pronto para i18n
-    ├── data/            Dados estruturados (serviços, contatos, frota...)
-    ├── hooks/           useReveal (animações), useMediaQuery
-    ├── styles/          Design tokens e estilos globais
-    ├── utils/           Links de contato e registro de ícones
-    ├── App.jsx          Montagem das seções
-    └── main.jsx         Ponto de entrada
+### Cotação inteligente
+
+Formulário comercial com fluxo estruturado de:
+
+**País → Cidade → Tipo de carga → Dados da operação**
+
+A cotação gera automaticamente uma mensagem organizada para contato comercial via WhatsApp.
+
+Ao acessar a cotação através de determinados serviços, o tipo de carga correspondente pode ser pré-selecionado.
+
+### Serviços interativos
+
+Cards compactos apresentam os principais serviços da empresa.
+
+Cada serviço possui:
+
+- acesso direto à cotação;
+- pré-seleção do tipo de carga quando aplicável;
+- modal **“Ver detalhes”** com informações adicionais;
+- interação adaptada para desktop e mobile.
+
+### Mapa operacional interativo
+
+Representação visual da presença da Mondel no Cone Sul, com:
+
+- unidades e países atendidos;
+- rotas logísticas;
+- pontos interativos;
+- tooltips;
+- sincronização entre mapa e informações das unidades;
+- animações de transporte;
+- suporte a `prefers-reduced-motion`.
+
+### Experiência multilíngue
+
+Estrutura preparada para conteúdo em diferentes idiomas, adequada ao contexto internacional da operação.
+
+### Interface responsiva
+
+O projeto foi desenvolvido para funcionar em diferentes tamanhos de tela:
+
+- desktop;
+- notebook;
+- tablet;
+- smartphone.
+
+Layout, navegação, formulários, cards e componentes interativos se reorganizam conforme o viewport.
+
+### Animações e microinterações
+
+A experiência utiliza animações sutis para reforçar a percepção de movimento e logística sem comprometer a usabilidade.
+
+Inclui:
+
+- animações on-scroll;
+- estados de hover/focus;
+- transições;
+- elementos de rota animados;
+- tratamento para usuários que preferem movimento reduzido.
+
+### SEO técnico
+
+Estrutura preparada com:
+
+- meta tags;
+- Open Graph;
+- Schema.org / JSON-LD;
+- `robots.txt`;
+- `sitemap.xml`;
+- URLs e conteúdo institucional estruturados para mecanismos de busca.
 
 ---
 
-## Preparado para outros idiomas
+## Tecnologias
 
-Todos os textos ficam em src/content/pt.js. Para adicionar espanhol/inglês no futuro, basta duplicar esse arquivo (ex.: es.js) e trocar a importação — sem reescrever os componentes.
+- React
+- Vite
+- JavaScript
+- CSS Modules
+- Lucide Icons
+- HTML5
+- CSS3
+- Git
+- GitHub
+- Vercel
+
+O projeto utiliza uma arquitetura baseada em componentes e mantém conteúdo, dados institucionais e identidade visual separados da camada de interface.
 
 ---
 
-## Funcionalidades
+## Arquitetura
 
-- Botão flutuante de WhatsApp com mensagem pronta
-- Formulário de cotação que monta a mensagem e abre no WhatsApp comercial
-- Links clicáveis: WhatsApp, telefone, e-mail, Instagram, LinkedIn
-- Google Maps integrado (sem necessidade de API key)
-- Animações on-scroll (Intersection Observer), respeitando prefers-reduced-motion
-- SEO: meta tags, Open Graph, Schema.org, robots.txt, sitemap.xml
-- 100% responsivo (mobile-first)
-
----
-
-## Checklist antes de publicar
-
-- [ ] Inserir o logo oficial em src/assets/logo/
-- [ ] Adicionar as fotos reais da frota
-- [ ] Trocar o domínio nos arquivos de SEO (index.html, public/sitemap.xml, public/robots.txt)
-- [ ] Adicionar uma imagem og-image.jpg em public/ (1200x630) para compartilhamento em redes
-- [ ] Conferir todos os textos em src/content/pt.js
+```text
+src/
+├── assets/              Imagens e identidade visual
+├── components/
+│   ├── layout/          Header, Footer e elementos globais
+│   ├── ui/              Componentes reutilizáveis
+│   └── sections/        Seções institucionais
+├── content/             Conteúdo textual / idiomas
+├── data/                Serviços, empresa, frota e outros dados
+├── hooks/               Hooks reutilizáveis
+├── styles/              Design tokens e estilos globais
+├── utils/               Utilitários
+├── App.jsx
+└── main.jsx
