@@ -90,25 +90,29 @@ export function Footer() {
         </p>
         <div className={`container ${styles.bottomInner}`}>
           <p>
-            © {year} {empresa.razaoSocial}. {footer.rights}
+            © {year} {empresa.razaoSocial} {footer.rights}
           </p>
           <div className={styles.bottomLinks}>
             <button type="button" className={styles.privacyLink} onClick={() => setPrivacyOpen(true)}>
               {footer.privacy}
             </button>
-            <a
-              href="https://www.instagram.com/inv.devs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.dev}
-              aria-label={`${footer.developer} INV Devs (Instagram @inv.devs)`}
-            >
-              <img src="/inv-devs.webp" alt="" width="30" height="30" loading="lazy" />
-              <span>
-                {footer.developer} <strong>INV Devs</strong>
-              </span>
-            </a>
           </div>
+        </div>
+        <div className={styles.madeByRow}>
+          <a
+            href="https://www.instagram.com/inv.devs"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.dev}
+            aria-label={`${footer.developer} INV Devs (Instagram @inv.devs)`}
+          >
+            <img src="/inv-devs.webp" alt="" width="56" height="56" loading="lazy" />
+            <span className={styles.devText}>
+              <span className={styles.devLabel}>{footer.developer}</span>
+              <span className={styles.devName}>INV Devs</span>
+              <span className={styles.devSub}>{footer.developerSub}</span>
+            </span>
+          </a>
         </div>
       </div>
 
