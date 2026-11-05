@@ -326,7 +326,7 @@ export const en = {
     },
     quote: 'Quote',
     rights: 'All rights reserved.',
-    developer: 'Crafted with excellence',
+    developer: 'Developed by',
     privacy: 'Privacy Policy',
   },
 

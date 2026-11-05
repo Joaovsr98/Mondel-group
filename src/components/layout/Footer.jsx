@@ -87,7 +87,18 @@ export function Footer() {
             <button type="button" className={styles.privacyLink} onClick={() => setPrivacyOpen(true)}>
               {footer.privacy}
             </button>
-            <span className={styles.dev}>{footer.developer}</span>
+            <a
+              href="https://www.instagram.com/inv.devs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.dev}
+              aria-label={`${footer.developer} INV Devs (Instagram @inv.devs)`}
+            >
+              <img src="/inv-devs.webp" alt="" width="30" height="30" loading="lazy" />
+              <span>
+                {footer.developer} <strong>INV Devs</strong>
+              </span>
+            </a>
           </div>
         </div>
       </div>

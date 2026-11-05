@@ -326,7 +326,7 @@ export const es = {
     },
     quote: 'Cotización',
     rights: 'Todos los derechos reservados.',
-    developer: 'Desarrollado con excelencia',
+    developer: 'Desarrollado por',
     privacy: 'Política de Privacidad',
   },
 

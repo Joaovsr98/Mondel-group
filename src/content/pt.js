@@ -326,7 +326,7 @@ export const pt = {
     },
     quote: 'Cotação',
     rights: 'Todos os direitos reservados.',
-    developer: 'Desenvolvido com excelência',
+    developer: 'Desenvolvido por',
     privacy: 'Política de Privacidade',
   },
 
