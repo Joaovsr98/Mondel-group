@@ -327,6 +327,9 @@ export const pt = {
     quote: 'Cotação',
     rights: 'Todos os direitos reservados.',
     developer: 'Desenvolvido por',
+    devCta: 'Gostou deste site?',
+    devCtaLink: 'Fale com a INV Devs no WhatsApp',
+    devCtaMessage: 'Olá! Vi o site da Mondel Group feito pela INV Devs e quero saber mais.',
     privacy: 'Política de Privacidade',
   },
 

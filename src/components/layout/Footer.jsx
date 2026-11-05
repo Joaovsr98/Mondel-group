@@ -8,6 +8,9 @@ import Logo from '../ui/Logo.jsx';
 import PrivacyModal from './PrivacyModal.jsx';
 import styles from './Footer.module.css';
 
+// WhatsApp da INV Devs, que desenvolveu o site.
+const INV_DEVS_WHATSAPP = '5511925272694';
+
 export function Footer() {
   const pt = useContent();
   const year = new Date().getFullYear();
@@ -79,6 +82,12 @@ export function Footer() {
       </div>
 
       <div className={styles.bottom}>
+        <p className={`container ${styles.devCta}`}>
+          {footer.devCta}{' '}
+          <a href={whatsappLink(footer.devCtaMessage, INV_DEVS_WHATSAPP)} target="_blank" rel="noopener noreferrer">
+            {footer.devCtaLink}
+          </a>
+        </p>
         <div className={`container ${styles.bottomInner}`}>
           <p>
             © {year} {empresa.razaoSocial}. {footer.rights}
